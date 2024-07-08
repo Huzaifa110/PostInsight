@@ -1,0 +1,21 @@
+{% extends "layout.html" %} 
+
+{% block title %} 
+Learning Django 
+{% endblock %} 
+
+{% block content %}
+<div class="container mt-3">
+  <h2 class="mb-3">
+    {% if form.instance.pk %} Edit Post {% else %} You can Post Here {% endif %}
+  </h2>
+  <form method="post" enctype="multipart/form-data" class="form mt-4">
+    {% csrf_token %}
+    <div class="mb-3">
+      {{ form.as_p }}
+    </div>
+    <button class="btn btn-outline-success" type="submit">Post</button>
+    <a href="{% url 'tweet_list' %}" class="btn btn-outline-secondary">Back</a>
+  </form>
+</div>
+{% endblock %}

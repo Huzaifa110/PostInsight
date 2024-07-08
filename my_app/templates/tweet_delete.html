@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Learning Django
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-3">
+    Do you really want to DELETE the Post?
+</h1>
+
+<div class="container mt-3">
+    <div class="card mb-3" style="width: 18rem;">
+      <img src="{{ tweet.photo.url }}" class="card-img-top" alt="..." style="width: 100%; height: auto; object-fit: cover;" />
+      <div class="card-body">
+        <h5 class="card-title">{{ tweet.user.username }}</h5>
+        <p class="card-text">{{ tweet.text }}</p>
+      </div>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-outline-danger">Delete</button>
+        <a class="btn btn-outline-secondary" href="{% url 'tweet_list' %}">Back</a>
+    </form>
+</div>
+
+{% endblock %}
